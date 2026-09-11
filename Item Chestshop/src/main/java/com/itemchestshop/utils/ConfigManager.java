@@ -34,4 +34,12 @@ public class ConfigManager {
     public int getMaxShopsPerPlayer() {
         return config.getInt("max-shops-per-player", 10);
     }
+
+    public String getItemAlias(String itemName) {
+        if (itemName == null || itemName.trim().isEmpty()) {
+            return null;
+        }
+
+        return config.getString("item_aliases." + itemName.trim().toLowerCase());
+    }
 }

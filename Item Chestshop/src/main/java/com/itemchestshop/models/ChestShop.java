@@ -3,7 +3,7 @@ package com.itemchestshop.models;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.Chest;
+import org.bukkit.block.Container;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -54,24 +54,24 @@ public class ChestShop {
     
     public boolean hasStock() {
         Block chestBlock = chestLocation.getBlock();
-        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST) {
+        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST && chestBlock.getType() != Material.BARREL) {
             return false;
         }
-        
-        Chest chest = (Chest) chestBlock.getState();
-        Inventory inventory = chest.getInventory();
+
+        Container container = (Container) chestBlock.getState();
+        Inventory inventory = container.getInventory();
         
         return inventory.containsAtLeast(giveItem, giveItem.getAmount());
     }
     
     public boolean canAcceptPayment() {
         Block chestBlock = chestLocation.getBlock();
-        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST) {
+        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST && chestBlock.getType() != Material.BARREL) {
             return false;
         }
-        
-        Chest chest = (Chest) chestBlock.getState();
-        Inventory inventory = chest.getInventory();
+
+        Container container = (Container) chestBlock.getState();
+        Inventory inventory = container.getInventory();
         
         // Check if chest has space for the payment items
         ItemStack[] contents = inventory.getContents();

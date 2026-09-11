@@ -1,10 +1,11 @@
 package com.itemchestshop.utils;
 
 import com.itemchestshop.models.ChestShop;
-import org.bukkit.Bukkit;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.Chest;
+
+import org.bukkit.block.Container;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -40,12 +41,12 @@ public class TransactionManager {
         
         // Get the chest inventory
         Block chestBlock = chestShop.getChestLocation().getBlock();
-        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST) {
-            return new TransactionResult(false, "no-chest-found");
+        if (chestBlock.getType() != Material.CHEST && chestBlock.getType() != Material.TRAPPED_CHEST && chestBlock.getType() != Material.BARREL) {
+            return new TransactionResult(false, "no-container-found");
         }
-        
-        Chest chest = (Chest) chestBlock.getState();
-        Inventory chestInventory = chest.getInventory();
+
+        Container container = (Container) chestBlock.getState();
+        Inventory inventory = container.getInventory();
         
         // Perform the transaction
         try {
@@ -53,10 +54,10 @@ public class TransactionManager {
             removeItemsFromPlayer(player, chestShop.getWantItem());
             
             // Add payment to chest
-            addItemsToInventory(chestInventory, chestShop.getWantItem());
+            addItemsToInventory(inventory, chestShop.getWantItem());
             
             // Remove items from chest
-            removeItemsFromInventory(chestInventory, chestShop.getGiveItem());
+            removeItemsFromInventory(inventory, chestShop.getGiveItem());
             
             // Give items to player
             addItemsToPlayer(player, chestShop.getGiveItem());
@@ -87,13 +88,13 @@ public class TransactionManager {
     private static void removeItemsFromPlayer(Player player, ItemStack items) {
         Inventory inventory = player.getInventory();
         int amountToRemove = items.getAmount();
-        
-        for (int i = 0; i < inventory.getSize() && amountToRemove > 0; i++) {
+
+        for(int i = 0; i < inventory.getSize() && amountToRemove > 0; ++i) {
             ItemStack slot = inventory.getItem(i);
             if (slot != null && slot.isSimilar(items)) {
                 int slotAmount = slot.getAmount();
                 if (slotAmount <= amountToRemove) {
-                    inventory.setItem(i, null);
+                    inventory.setItem(i, (ItemStack)null);
                     amountToRemove -= slotAmount;
                 } else {
                     slot.setAmount(slotAmount - amountToRemove);
@@ -101,8 +102,8 @@ public class TransactionManager {
                 }
             }
         }
+
     }
-    
     /**
      * Adds items to a player's inventory
      * @param player The player
@@ -111,41 +112,40 @@ public class TransactionManager {
     private static void addItemsToPlayer(Player player, ItemStack items) {
         Inventory inventory = player.getInventory();
         ItemStack toAdd = items.clone();
-        
-        // Try to add to existing stacks first
-        for (int i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; i++) {
-            ItemStack slot = inventory.getItem(i);
+
+        int i;
+        ItemStack slot;
+        int maxStack;
+        int amountToAdd;
+        for(i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; ++i) {
+            slot = inventory.getItem(i);
             if (slot != null && slot.isSimilar(toAdd)) {
-                int maxStack = slot.getMaxStackSize();
-                int currentAmount = slot.getAmount();
-                int canAdd = Math.min(maxStack - currentAmount, toAdd.getAmount());
-                
+                maxStack = slot.getMaxStackSize();
+                amountToAdd = slot.getAmount();
+                int canAdd = Math.min(maxStack - amountToAdd, toAdd.getAmount());
                 if (canAdd > 0) {
-                    slot.setAmount(currentAmount + canAdd);
+                    slot.setAmount(amountToAdd + canAdd);
                     toAdd.setAmount(toAdd.getAmount() - canAdd);
                 }
             }
         }
-        
-        // Add to empty slots
-        for (int i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; i++) {
-            ItemStack slot = inventory.getItem(i);
+
+        for(i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; ++i) {
+            slot = inventory.getItem(i);
             if (slot == null || slot.getType() == Material.AIR) {
-                int maxStack = toAdd.getMaxStackSize();
-                int amountToAdd = Math.min(maxStack, toAdd.getAmount());
-                
+                maxStack = toAdd.getMaxStackSize();
+                amountToAdd = Math.min(maxStack, toAdd.getAmount());
                 ItemStack newStack = toAdd.clone();
                 newStack.setAmount(amountToAdd);
                 inventory.setItem(i, newStack);
-                
                 toAdd.setAmount(toAdd.getAmount() - amountToAdd);
             }
         }
-        
-        // Drop remaining items if inventory is full
+
         if (toAdd.getAmount() > 0) {
             player.getWorld().dropItemNaturally(player.getLocation(), toAdd);
         }
+
     }
     
     /**
@@ -155,36 +155,36 @@ public class TransactionManager {
      */
     private static void addItemsToInventory(Inventory inventory, ItemStack items) {
         ItemStack toAdd = items.clone();
-        
-        // Try to add to existing stacks first
-        for (int i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; i++) {
-            ItemStack slot = inventory.getItem(i);
+
+        int i;
+        ItemStack slot;
+        int maxStack;
+        int amountToAdd;
+        for(i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; ++i) {
+            slot = inventory.getItem(i);
             if (slot != null && slot.isSimilar(toAdd)) {
-                int maxStack = slot.getMaxStackSize();
-                int currentAmount = slot.getAmount();
-                int canAdd = Math.min(maxStack - currentAmount, toAdd.getAmount());
-                
+                maxStack = slot.getMaxStackSize();
+                amountToAdd = slot.getAmount();
+                int canAdd = Math.min(maxStack - amountToAdd, toAdd.getAmount());
                 if (canAdd > 0) {
-                    slot.setAmount(currentAmount + canAdd);
+                    slot.setAmount(amountToAdd + canAdd);
                     toAdd.setAmount(toAdd.getAmount() - canAdd);
                 }
             }
         }
-        
-        // Add to empty slots
-        for (int i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; i++) {
-            ItemStack slot = inventory.getItem(i);
+
+        for(i = 0; i < inventory.getSize() && toAdd.getAmount() > 0; ++i) {
+            slot = inventory.getItem(i);
             if (slot == null || slot.getType() == Material.AIR) {
-                int maxStack = toAdd.getMaxStackSize();
-                int amountToAdd = Math.min(maxStack, toAdd.getAmount());
-                
+                maxStack = toAdd.getMaxStackSize();
+                amountToAdd = Math.min(maxStack, toAdd.getAmount());
                 ItemStack newStack = toAdd.clone();
                 newStack.setAmount(amountToAdd);
                 inventory.setItem(i, newStack);
-                
                 toAdd.setAmount(toAdd.getAmount() - amountToAdd);
             }
         }
+
     }
     
     /**

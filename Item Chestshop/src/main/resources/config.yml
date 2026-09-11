@@ -9,6 +9,725 @@ max-shops-per-player: 10
 # Shop sign format identifier
 shop-sign-format: "[SHOP]"
 
+# Custom item aliases. The value on the right has to be a valid Bukkit/Paper Material name
+item_aliases:
+
+  # ============================================================
+  # COMMON CURRENCY / MATERIAL ALIASES
+  # ============================================================
+  dia: diamond
+  dia_blk: diamond_block
+  eme: emerald
+  cobble: cobblestone
+  pearl: ender_pearl
+  iron: iron_ingot
+  gold: gold_ingot
+  netherite_upg: netherite_upgrade_smithing_template
+  # ============================================================
+  # COLORS
+  # ============================================================
+  #wh: white
+  #lg: light_gray
+  #gr: gray
+  #blk: black
+  #br: brown
+  #r: red
+  #o: orange
+  #y: yellow
+  #l: lime
+  #g: green
+  #c: cyan
+  #lb: light_blue
+  #b: blue
+  #pu: purple
+  #mag: magenta
+  #pi: pink
+  # ============================================================
+  # DYES
+  # ============================================================
+  wh_dye: white_dye
+  lg_dye: light_gray_dye
+  gr_dye: gray_dye
+  blk_dye: black_dye
+  br_dye: brown_dye
+  r_dye: red_dye
+  o_dye: orange_dye
+  y_dye: yellow_dye
+  l_dye: lime_dye
+  g_dye: green_dye
+  c_dye: cyan_dye
+  lb_dye: light_blue_dye
+  b_dye: blue_dye
+  pu_dye: purple_dye
+  mag_dye: magenta_dye
+  pi_dye: pink_dye
+  # ============================================================
+  # WOOL
+  # ============================================================
+  wh_wool: white_wool
+  lg_wool: light_gray_wool
+  gr_wool: gray_wool
+  blk_wool: black_wool
+  br_wool: brown_wool
+  r_wool: red_wool
+  o_wool: orange_wool
+  y_wool: yellow_wool
+  l_wool: lime_wool
+  g_wool: green_wool
+  c_wool: cyan_wool
+  lb_wool: light_blue_wool
+  b_wool: blue_wool
+  pu_wool: purple_wool
+  mag_wool: magenta_wool
+  pi_wool: pink_wool
+  # ============================================================
+  # Carpet
+  # ============================================================
+  wh_carpet: white_carpet
+  lg_carpet: light_gray_carpet
+  gr_carpet: gray_carpet
+  blk_carpet: black_carpet
+  br_carpet: brown_carpet
+  r_carpet: red_carpet
+  o_carpet: orange_carpet
+  y_carpet: yellow_carpet
+  l_carpet: lime_carpet
+  g_carpet: green_carpet
+  c_carpet: cyan_carpet
+  lb_carpet: light_blue_carpet
+  b_carpet: blue_carpet
+  pu_carpet: purple_carpet
+  mag_carpet: magenta_carpet
+  pi_carpet: pink_carpet
+
+  # ============================================================
+  # Terracotta
+  # ============================================================
+  wh_terracotta: white_terracotta
+  lg_terracotta: light_gray_terracotta
+  gr_terracotta: gray_terracotta
+  blk_terracotta: black_terracotta
+  br_terracotta: brown_terracotta
+  r_terracotta: red_terracotta
+  o_terracotta: orange_terracotta
+  y_terracotta: yellow_terracotta
+  l_terracotta: lime_terracotta
+  g_terracotta: green_terracotta
+  c_terracotta: cyan_terracotta
+  lb_terracotta: light_blue_terracotta
+  b_terracotta: blue_terracotta
+  pu_terracotta: purple_terracotta
+  mag_terracotta: magenta_terracotta
+  pi_terracotta: pink_terracotta
+
+  # ============================================================
+  # GLAZED TERRACOTTA
+  # ============================================================
+
+  wh_g_t: white_glazed_terracotta
+  lg_g_t: light_gray_glazed_terracotta
+  gr_g_t: gray_glazed_terracotta
+  blk_g_t: black_glazed_terracotta
+  br_g_t: brown_glazed_terracotta
+  r_g_t: red_glazed_terracotta
+  o_g_t: orange_glazed_terracotta
+  y_g_t: yellow_glazed_terracotta
+  l_g_t: lime_glazed_terracotta
+  g_g_t: green_glazed_terracotta
+  c_g_t: cyan_glazed_terracotta
+  lb_g_t: light_blue_glazed_terracotta
+  b_g_t: blue_glazed_terracotta
+  pu_g_t: purple_glazed_terracotta
+  mag_g_t: magenta_glazed_terracotta
+  pi_g_t: pink_glazed_terracotta
+
+
+  # ============================================================
+  # Concrete
+  # ============================================================
+  wh_concrete: white_concrete
+  lg_concrete: light_gray_concrete
+  gr_concrete: gray_concrete
+  blk_concrete: black_concrete
+  br_concrete: brown_concrete
+  r_concrete: red_concrete
+  o_concrete: orange_concrete
+  y_concrete: yellow_concrete
+  l_concrete: lime_concrete
+  g_concrete: green_concrete
+  c_concrete: cyan_concrete
+  lb_concrete: light_blue_concrete
+  b_concrete: blue_concrete
+  pu_concrete: purple_concrete
+  mag_concrete: magenta_concrete
+  pi_concrete: pink_concrete
+
+  # ============================================================
+  # Concrete Powder
+  # ============================================================
+  w_c_p: white_concrete_powder
+  lg_c_p: light_gray_concrete_powder
+  gr_c_p: gray_concrete_powder
+  blk_c_p: black_concrete_powder
+  br_c_p: brown_concrete_powder
+  r_c_p: red_concrete_powder
+  o_c_p: orange_concrete_powder
+  y_c_p: yellow_concrete_powder
+  l_c_p: lime_concrete_powder
+  g_c_p: green_concrete_powder
+  c_c_p: cyan_concrete_powder
+  lb_c_p: light_blue_concrete_powder
+  b_c_p: blue_concrete_powder
+  pu_c_p: purple_concrete_powder
+  mag_c_p: magenta_concrete_powder
+  pi_c_p: pink_concrete_powder
+
+  # ============================================================
+  # Stained Glass
+  # ============================================================
+  wh_s_g: white_stained_glass
+  lg_s_g: light_gray_stained_glass
+  gr_s_g: gray_stained_glass
+  blk_s_g: black_stained_glass
+  br_s_g: brown_stained_glass
+  r_s_g: red_stained_glass
+  o_s_g: orange_stained_glass
+  y_s_g: yellow_stained_glass
+  l_s_g: lime_stained_glass
+  g_s_g: green_stained_glass
+  c_s_g: cyan_stained_glass
+  lb_s_g: light_blue_stained_glass
+  b_s_g: blue_stained_glass
+  pu_s_g: purple_stained_glass
+  mag_s_g: magenta_stained_glass
+  pi_s_g: pink_stained_glass
+
+  # ============================================================
+  # Stained Glass Pane
+  # ============================================================
+  wh_s_g_p: white_stained_glass_pane
+  lg_s_g_p: light_gray_stained_glass_pane
+  gr_s_g_p: gray_stained_glass_pane
+  blk_s_g_p: black_stained_glass_pane
+  br_s_g_p: brown_stained_glass_pane
+  r_s_g_p: red_stained_glass_pane
+  o_s_g_p: orange_stained_glass_pane
+  y_s_g_p: yellow_stained_glass_pane
+  l_s_g_p: lime_stained_glass_pane
+  g_s_g_p: green_stained_glass_pane
+  c_s_g_p: cyan_stained_glass_pane
+  lb_s_g_p: light_blue_stained_glass_pane
+  b_s_g_p: blue_stained_glass_pane
+  pu_s_g_p: purple_stained_glass_pane
+  mag_s_g_p: magenta_stained_glass_pane
+  pi_s_g_p: pink_stained_glass_pane
+
+  # ============================================================
+  # Shuckle Box
+  # ============================================================
+  wh_s_b: white_shulker_box
+  lg_s_b: light_gray_shulker_box
+  gr_s_b: gray_shulker_box
+  blk_s_b: black_shulker_box
+  br_s_b: brown_shulker_box
+  r_s_b: red_shulker_box
+  o_s_b: orange_shulker_box
+  y_s_b: yellow_shulker_box
+  l_s_b: lime_shulker_box
+  g_s_b: green_shulker_box
+  c_s_b: cyan_shulker_box
+  lb_s_b: light_blue_shulker_box
+  b_s_b: blue_shulker_box
+  pu_s_b: purple_shulker_box
+  mag_s_b: magenta_shulker_box
+  pi_s_b: pink_shulker_box
+
+  # ============================================================
+  # Beds
+  # ============================================================
+  wh_bed: white_bed
+  lg_bed: light_gray_bed
+  gr_bed: gray_bed
+  blk_bed: black_bed
+  br_bed: brown_bed
+  r_bed: red_bed
+  o_bed: orange_bed
+  y_bed: yellow_bed
+  l_bed: lime_bed
+  g_bed: green_bed
+  c_bed: cyan_bed
+  lb_bed: light_blue_bed
+  b_bed: blue_bed
+  pu_bed: purple_bed
+  mag_bed: magenta_bed
+  pi_bed: pink_bed
+
+  # ============================================================
+  # Candles
+  # ============================================================
+  wh_candle: white_candle
+  lg_candle: light_gray_candle
+  gr_candle: gray_candle
+  blk_candle: black_candle
+  br_candle: brown_candle
+  r_candle: red_candle
+  o_candle: orange_candle
+  y_candle: yellow_candle
+  l_candle: lime_candle
+  g_candle: green_candle
+  c_candle: cyan_candle
+  lb_candle: light_blue_candle
+  b_candle: blue_candle
+  pu_candle: purple_candle
+  mag_candle: magenta_candle
+  pi_candle: pink_candle
+
+  # ============================================================
+  # BANNERS
+  # ============================================================
+
+  wh_b: white_banner
+  lg_b: light_gray_banner
+  gr_b: gray_banner
+  blk_b: black_banner
+  br_b: brown_banner
+  r_b: red_banner
+  o_b: orange_banner
+  y_b: yellow_banner
+  l_b: lime_banner
+  g_b: green_banner
+  c_b: cyan_banner
+  lb_b: light_blue_banner
+  b_b: blue_banner
+  pu_b: purple_banner
+  mag_b: magenta_banner
+  pi_b: pink_banner
+
+
+  # ============================================================
+  # ARMOR TRIMS
+  # ============================================================
+
+  bolt_at: bolt_armor_trim_smithing_template
+  coast_at: coast_armor_trim_smithing_template
+  dune_at: dune_armor_trim_smithing_template
+  eye_at: eye_armor_trim_smithing_template
+  flow_at: flow_armor_trim_smithing_template
+  host_at: host_armor_trim_smithing_template
+  raiser_at: raiser_armor_trim_smithing_template
+  rib_at: rib_armor_trim_smithing_template
+  sentry_at: sentry_armor_trim_smithing_template
+  shaper_at: shaper_armor_trim_smithing_template
+  silence_at: silence_armor_trim_smithing_template
+  snout_at: snout_armor_trim_smithing_template
+  spire_at: spire_armor_trim_smithing_template
+  tide_at: tide_armor_trim_smithing_template
+  vex_at: vex_armor_trim_smithing_template
+  ward_at: ward_armor_trim_smithing_template
+  wayfinder_at: wayfinder_armor_trim_smithing_template
+  wild_at: wild_armor_trim_smithing_template
+
+  # ============================================================
+  # MUSIC DISCS
+  # ============================================================
+
+  # Format: md_(song)
+  # Example: md_pigstep = music_disc_pigstep
+  md_13: music_disc_13
+  md_cat: music_disc_cat
+  md_blocks: music_disc_blocks
+  md_chirp: music_disc_chirp
+  md_far: music_disc_far
+  md_mall: music_disc_mall
+  md_mellohi: music_disc_mellohi
+  md_stal: music_disc_stal
+  md_strad: music_disc_strad
+  md_ward: music_disc_ward
+  md_11: music_disc_11
+  md_wait: music_disc_wait
+  md_5: music_disc_5
+  md_pigstep: music_disc_pigstep
+  md_otherside: music_disc_otherside
+  md_relic: music_disc_relic
+  md_precipice: music_disc_precipice
+  md_creator: music_disc_creator
+  md_creator_mb: music_disc_creator_music_box
+  md_bounce: music_disc_bounce
+  md_tears: music_disc_tears
+  md_lava_chicken: music_disc_lava_chicken
+
+  # ============================================================
+  # CORAL
+  # ============================================================
+
+  t_c_b: tube_coral_block
+  br_c_b: brain_coral_block
+  bu_c_b: bubble_coral_block
+  f_c_b: fire_coral_block
+  h_c_b: horn_coral_block
+
+  d_t_c_b: dead_tube_coral_block
+  d_br_c_b: dead_brain_coral_block
+  d_bu_c_b: dead_bubble_coral_block
+  d_f_c_b: dead_fire_coral_block
+  d_h_c_b: dead_horn_coral_block
+
+  # ============================================================
+  # STRIPPED WOOD
+  # ============================================================
+
+  st_oak_log: stripped_oak_log
+  st_oak_wood: stripped_oak_wood
+
+  st_spruce_log: stripped_spruce_log
+  st_spruce_wood: stripped_spruce_wood
+
+  st_birch_log: stripped_birch_log
+  st_birch_wood: stripped_birch_wood
+
+  st_jungle_log: stripped_jungle_log
+  st_jungle_wood: stripped_jungle_wood
+
+  st_acacia_log: stripped_acacia_log
+  st_acacia_wood: stripped_acacia_wood
+
+  st_dark_oak_log: stripped_dark_oak_log
+  st_dark_oak_wood: stripped_dark_oak_wood
+
+  st_mang_log: stripped_mangrove_log
+  st_mang_wood: stripped_mangrove_wood
+
+  st_cherry_log: stripped_cherry_log
+  st_cherry_wood: stripped_cherry_wood
+
+  st_cr_stem: stripped_crimson_stem
+  st_cr_hyphae: stripped_crimson_hyphae
+
+  st_wa_stem: stripped_warped_stem
+  st_wa_hyphae: stripped_warped_hyphae
+
+  st_p_o_log: stripped_pale_oak_log
+  st_p_o_wood: stripped_pale_oak_wood
+
+  # ============================================================
+  # COPPER / OXIDATION
+  # ============================================================
+  #
+  # Oxidation prefixes:
+  #   ex_     = exposed
+  #   wea_    = weathered
+  #   ox_     = oxidized
+  #
+  # Waxed prefixes:
+  #   w_      = waxed
+  #   w_ex_   = waxed exposed
+  #   w_wea_  = waxed weathered
+  #   w_ox_   = waxed oxidized
+  #
+  # Copper item abbreviations:
+  #   c_blk    = copper block
+  #   ch_c     = chiseled copper
+  #   c_gr     = copper grate
+  #   cut_c    = cut copper
+  #   cut_c_st = cut copper stairs
+  #   cut_c_sl = cut copper slab
+  #   c_bars   = copper bars
+  #   c_door   = copper door
+  #   c_td     = copper trapdoor
+  #   c_bulb   = copper bulb
+  #   c_chain  = copper chain
+  #   c_lan    = copper lantern
+  #   c_chest  = copper chest
+  #   cgs      = copper golem statue
+  #
+  # Examples:
+  #   ox_c_blk     = oxidized copper block
+  #   w_ex_c_door  = waxed exposed copper door
+  #   w_ox_cgs     = waxed oxidized copper golem statue
+
+
+  # Copper Block
+  c_blk: copper_block
+  ex_c_blk: exposed_copper
+  wea_c_blk: weathered_copper
+  ox_c_blk: oxidized_copper
+
+  w_c_blk: waxed_copper_block
+  w_ex_c_blk: waxed_exposed_copper
+  w_wea_c_blk: waxed_weathered_copper
+  w_ox_c_blk: waxed_oxidized_copper
+
+
+  # Chiseled Copper
+  ch_c: chiseled_copper
+  ex_ch_c: exposed_chiseled_copper
+  wea_ch_c: weathered_chiseled_copper
+  ox_ch_c: oxidized_chiseled_copper
+
+  w_ch_c: waxed_chiseled_copper
+  w_ex_ch_c: waxed_exposed_chiseled_copper
+  w_wea_ch_c: waxed_weathered_chiseled_copper
+  w_ox_ch_c: waxed_oxidized_chiseled_copper
+
+
+  # Copper Grate
+  c_gr: copper_grate
+  ex_c_gr: exposed_copper_grate
+  wea_c_gr: weathered_copper_grate
+  ox_c_gr: oxidized_copper_grate
+
+  w_c_gr: waxed_copper_grate
+  w_ex_c_gr: waxed_exposed_copper_grate
+  w_wea_c_gr: waxed_weathered_copper_grate
+  w_ox_c_gr: waxed_oxidized_copper_grate
+
+
+  # Cut Copper
+  cut_c: cut_copper
+  ex_cut_c: exposed_cut_copper
+  wea_cut_c: weathered_cut_copper
+  ox_cut_c: oxidized_cut_copper
+
+  w_cut_c: waxed_cut_copper
+  w_ex_cut_c: waxed_exposed_cut_copper
+  w_wea_cut_c: waxed_weathered_cut_copper
+  w_ox_cut_c: waxed_oxidized_copper
+
+
+  # Cut Copper Stairs
+  cut_c_st: cut_copper_stairs
+  ex_cut_c_st: exposed_cut_copper_stairs
+  wea_cut_c_st: weathered_cut_copper_stairs
+  ox_cut_c_st: oxidized_cut_copper_stairs
+
+  w_cut_c_st: waxed_cut_copper_stairs
+  w_ex_cut_c_st: waxed_exposed_cut_copper_stairs
+  w_wea_cut_c_st: waxed_weathered_cut_copper_stairs
+  w_ox_cut_c_st: waxed_oxidized_copper_stairs
+
+
+  # Cut Copper Slab
+  cut_c_sl: cut_copper_slab
+  ex_cut_c_sl: exposed_cut_copper_slab
+  wea_cut_c_sl: weathered_cut_copper_slab
+  ox_cut_c_sl: oxidized_cut_copper_slab
+
+  w_cut_c_sl: waxed_cut_copper_slab
+  w_ex_cut_c_sl: waxed_exposed_cut_copper_slab
+  w_wea_cut_c_sl: waxed_weathered_cut_copper_slab
+  w_ox_cut_c_sl: waxed_oxidized_copper_slab
+
+
+  # Copper Bars
+  c_bars: copper_bars
+  ex_c_bars: exposed_copper_bars
+  wea_c_bars: weathered_copper_bars
+  ox_c_bars: oxidized_copper_bars
+
+  w_c_bars: waxed_copper_bars
+  w_ex_c_bars: waxed_exposed_copper_bars
+  w_wea_c_bars: waxed_weathered_copper_bars
+  w_ox_c_bars: waxed_oxidized_copper_bars
+
+
+  # Copper Door
+  c_door: copper_door
+  ex_c_door: exposed_copper_door
+  wea_c_door: weathered_copper_door
+  ox_c_door: oxidized_copper_door
+
+  w_c_door: waxed_copper_door
+  w_ex_c_door: waxed_exposed_copper_door
+  w_wea_c_door: waxed_weathered_copper_door
+  w_ox_c_door: waxed_oxidized_copper_door
+
+
+  # Copper Trapdoor
+  c_td: copper_trapdoor
+  ex_c_td: exposed_copper_trapdoor
+  wea_c_td: weathered_copper_trapdoor
+  ox_c_td: oxidized_copper_trapdoor
+
+  w_c_td: waxed_copper_trapdoor
+  w_ex_c_td: waxed_exposed_copper_trapdoor
+  w_wea_c_td: waxed_weathered_copper_trapdoor
+  w_ox_c_td: waxed_oxidized_copper_trapdoor
+
+
+  # Copper Bulb
+  c_bulb: copper_bulb
+  ex_c_bulb: exposed_copper_bulb
+  wea_c_bulb: weathered_copper_bulb
+  ox_c_bulb: oxidized_copper_bulb
+
+  w_c_bulb: waxed_copper_bulb
+  w_ex_c_bulb: waxed_exposed_copper_bulb
+  w_wea_c_bulb: waxed_weathered_copper_bulb
+  w_ox_c_bulb: waxed_oxidized_copper_bulb
+
+
+  # Copper Chain
+  c_chain: copper_chain
+  ex_c_chain: exposed_copper_chain
+  wea_c_chain: weathered_copper_chain
+  ox_c_chain: oxidized_copper_chain
+
+  w_c_chain: waxed_copper_chain
+  w_ex_c_chain: waxed_exposed_copper_chain
+  w_wea_c_chain: waxed_weathered_copper_chain
+  w_ox_c_chain: waxed_oxidized_copper_chain
+
+
+  # Copper Lantern
+  c_lan: copper_lantern
+  ex_c_lan: exposed_copper_lantern
+  wea_c_lan: weathered_copper_lantern
+  ox_c_lan: oxidized_copper_lantern
+
+  w_c_lan: waxed_copper_lantern
+  w_ex_c_lan: waxed_exposed_copper_lantern
+  w_wea_c_lan: waxed_weathered_copper_lantern
+  w_ox_c_lan: waxed_oxidized_copper_lantern
+
+
+  # Copper Chest
+  c_chest: copper_chest
+  ex_c_chest: exposed_copper_chest
+  wea_c_chest: weathered_copper_chest
+  ox_c_chest: oxidized_copper_chest
+
+  w_c_chest: waxed_copper_chest
+  w_ex_c_chest: waxed_exposed_copper_chest
+  w_wea_c_chest: waxed_weathered_copper_chest
+  w_ox_c_chest: waxed_oxidized_copper_chest
+
+
+  # Copper Golem Statue
+  cgs: copper_golem_statue
+  ex_cgs: exposed_copper_golem_statue
+  wea_cgs: weathered_copper_golem_statue
+  ox_cgs: oxidized_copper_golem_statue
+
+  w_cgs: waxed_copper_golem_statue
+  w_ex_cgs: waxed_exposed_copper_golem_statue
+  w_wea_cgs: waxed_weathered_copper_golem_statue
+  w_ox_cgs: waxed_oxidized_copper_golem_statue
+
+  # ============================================================
+  # HORSE / NAUTILUS ARMOR
+  # ============================================================
+
+  # Horse Armor
+  iron_ha: iron_horse_armor
+  gold_ha: golden_horse_armor
+  dia_ha: diamond_horse_armor
+  netherite_ha: netherite_horse_armor
+
+  # Nautilus Armor
+  iron_na: iron_nautilus_armor
+  gold_na: golden_nautilus_armor
+  dia_na: diamond_nautilus_armor
+  netherite_na: netherite_nautilus_armor
+  copper_na: copper_nautilus_armor
+
+  # ============================================================
+  # SANDSTONE
+  # ============================================================
+
+  ss: sandstone
+  ss_st: sandstone_stairs
+  ss_sl: sandstone_slab
+  ss_wall: sandstone_wall
+  ch_ss: chiseled_sandstone
+  sm_ss: smooth_sandstone
+  sm_ss_st: smooth_sandstone_stairs
+  sm_ss_sl: smooth_sandstone_slab
+  cut_ss: cut_sandstone
+  cut_ss_sl: cut_sandstone_slab
+
+  # Red Sandstone
+  r_ss: red_sandstone
+  r_ss_st: red_sandstone_stairs
+  r_ss_sl: red_sandstone_slab
+  r_ss_wall: red_sandstone_wall
+  ch_r_ss: chiseled_red_sandstone
+  sm_r_ss: smooth_red_sandstone
+  sm_r_ss_st: smooth_red_sandstone_stairs
+  sm_r_ss_sl: smooth_red_sandstone_slab
+  cut_r_ss: cut_red_sandstone
+  cut_r_ss_sl: cut_red_sandstone_slab
+
+  # ============================================================
+  # RED NETHER BRICKS
+  # ============================================================
+
+  r_n_b: red_nether_bricks
+  r_n_b_st: red_nether_brick_stairs
+  r_n_b_sl: red_nether_brick_slab
+  r_n_b_wall: red_nether_brick_wall
+
+  # ============================================================
+  # PRISMARINE
+  # ============================================================
+
+  pri: prismarine
+  pri_st: prismarine_stairs
+  pri_sl: prismarine_slab
+
+  d_pri: dark_prismarine
+  d_pri_st: dark_prismarine_stairs
+  d_pri_sl: dark_prismarine_slab
+
+  pri_b: prismarine_bricks
+  pri_b_st: prismarine_brick_stairs
+  pri_b_sl: prismarine_brick_slab
+
+  # ============================================================
+  # BLACKSTONE
+  # ============================================================
+
+  bks: blackstone
+  bks_st: blackstone_stairs
+  bks_sl: blackstone_slab
+  bks_wall: blackstone_wall
+
+  p_bks: polished_blackstone
+  p_bks_st: polished_blackstone_stairs
+  p_bks_sl: polished_blackstone_slab
+  p_bks_wall: polished_blackstone_wall
+
+  p_bks_b: polished_blackstone_bricks
+  p_bks_b_st: polished_blackstone_brick_stairs
+  p_bks_b_sl: polished_blackstone_brick_slab
+  p_bks_b_wall: polished_blackstone_brick_wall
+
+  # ============================================================
+  # END STONE BRICKS
+  # ============================================================
+
+  end_sb: end_stone_bricks
+  end_sb_st: end_stone_brick_stairs
+  end_sb_sl: end_stone_brick_slab
+  end_sb_wall: end_stone_brick_wall
+
+
+  # ============================================================
+  # Diorite, Granite, Andesite
+  # ============================================================
+
+  p_dio: polished_diorite
+  p_dio_st: polished_diorite_stairs
+  p_dio_sl: polished_diorite_slab
+
+  p_gra: polished_granite
+  p_gra_st: polished_granite_stairs
+  p_gra_sl: polished_granite_slab
+
+  p_and: polished_andesite
+  p_and_st: polished_andesite_stairs
+  p_and_sl: polished_andesite_slab
+
+
 # Messages
 messages:
   shop-created: "&aChest shop created successfully!"

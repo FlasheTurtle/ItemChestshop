@@ -1,0 +1,25 @@
+name: ItemChestShop
+version: 1.0.0
+main: com.itemchestshop.ItemChestShopPlugin
+api-version: 1.21
+author: VydeogamzXD
+description: A chest shop plugin that uses items for items instead of economy
+website: https://github.com/yourusername/itemchestshop
+
+commands:
+  itemchestshop:
+    description: Main command for ItemChestShop
+    usage: /itemchestshop [reload|help]
+    permission: itemchestshop.admin
+    aliases: [ics]
+
+permissions:
+  itemchestshop.admin:
+    description: Allows access to admin commands
+    default: op
+  itemchestshop.create:
+    description: Allows creating chest shops
+    default: true
+  itemchestshop.use:
+    description: Allows using chest shops
+    default: true

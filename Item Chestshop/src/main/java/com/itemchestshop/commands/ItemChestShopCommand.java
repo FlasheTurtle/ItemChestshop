@@ -259,7 +259,7 @@ public class ItemChestShopCommand implements CommandExecutor {
      * @param itemName The item to search for
      */
     private void findShops(CommandSender sender, String itemName) {
-        ItemStack searchItem = ItemParser.parseItem(itemName);
+        ItemStack searchItem = ItemParser.parseItem(itemName, plugin.getConfigManager());
         
         if (searchItem == null) {
             sender.sendMessage(Component.text("Invalid item: " + itemName, NamedTextColor.RED));

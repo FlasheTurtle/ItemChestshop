@@ -4,137 +4,149 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemParser {
-    
+
     /**
-     * Parses a string like "Diamond 1" or "Bread 64" into an ItemStack
-     * @param itemString The string to parse (e.g., "Diamond 1", "Oak_Log 32")
+     * Parses an item string containing a material name and amount
+     * into an ItemStack.
+     * Supports both "Diamond 64" and "64 Diamond" formats.
+     * @param itemString The string to parse
      * @return ItemStack or null if parsing fails
      */
-    public static ItemStack parseItem(String itemString) {
+    public static ItemStack parseItem(String itemString, ConfigManager configManager) {
         if (itemString == null || itemString.trim().isEmpty()) {
             return null;
         }
-        
+
         String[] parts = itemString.trim().split("\\s+");
         if (parts.length != 2) {
             return null;
         }
-        
-        String materialName = parts[0].toUpperCase();
-        String amountString = parts[1];
-        
-        // Try to parse the amount
+
+        // Determine which part is the amount and which is the material name.
         int amount;
+        String materialName;
+
         try {
-            amount = Integer.parseInt(amountString);
-            if (amount <= 0 || amount > 64) {
+            // Try the first part as the amount.
+            // If successful, the second part must be the material name.
+            amount = Integer.parseInt(parts[0]);
+            materialName = parts[1].toUpperCase();
+        } catch (NumberFormatException e) {
+            // The first part was not a number, so treat it as the material name
+            // and try the second part as the amount.
+            materialName = parts[0].toUpperCase();
+
+
+            try{
+                amount = Integer.parseInt(parts[1]);
+            } catch(NumberFormatException e2){
+                // Neither part was a valid number
                 return null;
             }
-        } catch (NumberFormatException e) {
+
+        }
+
+        // Make sure the amount is within the valid Minecraft stack size.
+        if (amount <= 0 || amount > 64) {
             return null;
         }
-        
-        // Try to get the material
-        Material material = getMaterialFromString(materialName);
+
+        // Get the material, make sure it is not null or air
+        Material material = getMaterialFromString(materialName, configManager);;
         if (material == null || material == Material.AIR) {
             return null;
         }
-        
+
+
         return new ItemStack(material, amount);
     }
-    
+
     /**
-     * Gets a Material from a string, handling common variations
+     * Gets a Material from a string, handling configured aliases and common variations.
+     *
      * @param materialName The material name to parse
+     * @param configManager Provides configured item aliases
      * @return Material or null if not found
      */
-    private static Material getMaterialFromString(String materialName) {
-        // First try direct match
-        try {
-            return Material.valueOf(materialName.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            // Try with common variations
-            String normalized = normalizeItemName(materialName);
+    private static Material getMaterialFromString(String materialName, ConfigManager configManager){
+        if (materialName != null && !materialName.trim().isEmpty()) {
+            String input = materialName.trim().toUpperCase().replace(" ", "_");
+
+            // Check config aliases first
+            String alias = configManager.getItemAlias(input);
+
+            if (alias != null) {
+                try {
+                    return Material.valueOf(alias.toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    // Invalid configured alias; continue with normal parsing.
+                }
+            }
+
             try {
-                return Material.valueOf(normalized);
-            } catch (IllegalArgumentException e2) {
+                return Material.valueOf(input);
+            } catch (IllegalArgumentException var9) {
+                String[] variations = new String[]{input, input + "_BLOCK", input + "_ITEM", input + "_ORE", input + "_INGOT", "RAW_" + input, input + "_SLAB", input + "_STAIRS", input + "_FENCE", input + "_DOOR", input + "_TRAPDOOR", input + "_BUTTON", input + "_PRESSURE_PLATE", input + "_WALL", "STRIPPED_" + input, input + "_WOOD", input + "_LOG", input + "_PLANKS", input + "_LEAVES", input + "_SAPLING"};
+                String[] var3 = variations;
+                int var4 = variations.length;
+                int var5 = 0;
+
+                while(var5 < var4) {
+                    String variation = var3[var5];
+
+                    try {
+                        return Material.valueOf(variation);
+                    } catch (IllegalArgumentException var8) {
+                        ++var5;
+                    }
+                }
+
+                Material[] var11 = Material.values();
+                var5 = var11.length;
+
+                Material material;
+                int var12;
+                for(var12 = 0; var12 < var5; ++var12) {
+                    material = var11[var12];
+                    if (material.isItem() && material.name().contains(input)) {
+                        return material;
+                    }
+                }
+
+                var11 = Material.values();
+                var5 = var11.length;
+
+                for(var12 = 0; var12 < var5; ++var12) {
+                    material = var11[var12];
+                    if (material.isItem() && input.contains(material.name())) {
+                        return material;
+                    }
+                }
+
                 return null;
             }
+        } else {
+            return null;
         }
     }
-    
-    /**
-     * Normalizes item names to match Minecraft material names
-     * @param itemName The item name to normalize
-     * @return Normalized material name
-     */
-    private static String normalizeItemName(String itemName) {
-        String normalized = itemName.toUpperCase().replace(" ", "_");
-        
-        // Handle common aliases
-        switch (normalized) {
-            case "WOOD":
-            case "LOG":
-                return "OAK_LOG";
-            case "STONE":
-                return "COBBLESTONE";
-            case "DIRT":
-                return "DIRT";
-            case "GRASS":
-                return "GRASS_BLOCK";
-            case "PLANK":
-            case "PLANKS":
-                return "OAK_PLANKS";
-            case "STICK":
-                return "STICK";
-            case "COAL":
-                return "COAL";
-            case "IRON":
-                return "IRON_INGOT";
-            case "GOLD":
-                return "GOLD_INGOT";
-            case "DIAMOND":
-                return "DIAMOND";
-            case "EMERALD":
-                return "EMERALD";
-            case "BREAD":
-                return "BREAD";
-            case "WHEAT":
-                return "WHEAT";
-            case "APPLE":
-                return "APPLE";
-            case "BEEF":
-                return "BEEF";
-            case "PORK":
-                return "PORKCHOP";
-            case "CHICKEN":
-                return "CHICKEN";
-            case "LEATHER":
-                return "LEATHER";
-            case "WOOL":
-                return "WHITE_WOOL";
-            default:
-                return normalized;
-        }
-    }
-    
+
+
+
     /**
      * Converts an ItemStack to a readable string format
      * @param item The ItemStack to convert
      * @return String representation (e.g., "Diamond 1")
      */
     public static String itemToString(ItemStack item) {
-        if (item == null || item.getType() == Material.AIR) {
+        if (item != null && item.getType() != Material.AIR) {
+            String materialName = item.getType().name().toLowerCase();
+            materialName = capitalizeWords(materialName.replace("_", " "));
+            return materialName + " " + item.getAmount();
+        } else {
             return "Air 0";
         }
-        
-        String materialName = item.getType().name().toLowerCase();
-        // Convert DIAMOND to Diamond, OAK_LOG to Oak_Log, etc.
-        materialName = capitalizeWords(materialName.replace("_", " "));
-        
-        return materialName + " " + item.getAmount();
     }
-    
+
     /**
      * Capitalizes the first letter of each word
      * @param str The string to capitalize
@@ -143,8 +155,8 @@ public class ItemParser {
     private static String capitalizeWords(String str) {
         String[] words = str.split(" ");
         StringBuilder result = new StringBuilder();
-        
-        for (int i = 0; i < words.length; i++) {
+
+        for(int i = 0; i < words.length; ++i) {
             if (i > 0) {
                 result.append(" ");
             }
@@ -155,7 +167,7 @@ public class ItemParser {
                 }
             }
         }
-        
+
         return result.toString();
     }
 }

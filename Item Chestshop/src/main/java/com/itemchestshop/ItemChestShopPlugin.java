@@ -22,13 +22,13 @@ public class ItemChestShopPlugin extends JavaPlugin {
         chestShopManager = new ChestShopManager(this);
         
         // Register listeners
-        getServer().getPluginManager().registerEvents(new SignListener(this), this);
-        getServer().getPluginManager().registerEvents(new ChestShopListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new SignListener(this), this);
+        this.getServer().getPluginManager().registerEvents(new ChestShopListener(this), this);
         
         // Register commands
-        getCommand("itemchestshop").setExecutor(new ItemChestShopCommand(this));
+        this.getCommand("itemchestshop").setExecutor(new ItemChestShopCommand(this));
         
-        getLogger().info("ItemChestShop has been enabled!");
+        this.getLogger().info("ItemChestShop has been enabled!");
     }
     
     @Override
