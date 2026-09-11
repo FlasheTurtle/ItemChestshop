@@ -1,1 +1,8 @@
-if for some really reason you would really want to donate to me, here is my solana addy: 2WFHa1kVieWQQUwj9yZVfyqez2Gu2qV7J5PvBfy57KS6
+Added barrel support, multi-line item definitions for longer item names, flexible item/amount parsing, and configurable item aliases through YAML configuration.
+
+Added barrel support alongside chests
+Extended sign parsing for longer item names
+Improved item/amount parsing
+Added configurable item aliases
+Built and tested the plugin using Maven and Paper
+Investigated differences between the published source and distributed plugin JAR, updated to 1.0.3
